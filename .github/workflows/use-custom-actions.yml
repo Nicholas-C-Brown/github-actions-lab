@@ -32,7 +32,13 @@ jobs:
         with:
           repo-token: ${{secrets.GITHUB_TOKEN}}
           joke: ${{steps.jokes.outputs.joke-output}}
-          issue-title: "A joke for you from custom actions workflow"       
+          issue-title: "A joke for you from custom actions workflow"        
+
+      - name: Hello world action step
+        id: hello
+        uses: Nicholas-C-Brown/github-actions-lab/.github/actions/hello-world-javascript-action@main
+        with:
+            who-to-greet: 'Mona the Octocat'
 
   docker-custom-actions:
     runs-on: ubuntu-latest
@@ -55,3 +61,5 @@ jobs:
           repoToken: ${{secrets.GITHUB_TOKEN}}
           catFact: ${{steps.cat.outputs.fact}}
           issueTitle: "A cat fact for you from ${{ github.repository_owner }}"
+
+     
